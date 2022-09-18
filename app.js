@@ -5,7 +5,8 @@ import { fileURLToPath } from 'url';
 import express from 'express';
 import createHttpError from 'http-errors';
 import path from 'path';
-
+import * as dotenv from 'dotenv'
+dotenv.config()
 // Express initialization
 var app = express();
 app.use(express.json());
@@ -152,7 +153,6 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-const port = 3000
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+app.listen(process.env.PORT, () => {
+  console.log(`Example app listening on port ${process.env.PORT}`)
 })
